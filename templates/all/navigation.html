@@ -1,0 +1,70 @@
+{% load static %}
+
+    <nav class="navbar navbar-expand navbar-light bg-light">
+        <a class="navbar-brand" href="{% url 'home' %}"><span style="color: #2851a3; ">Everton</span><span style="color: white; ">Daily</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item" id="removeMobile">
+                    <a class="nav-link slashes">//</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link slashes">//</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'pages:latest'  %}">Latest</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link slashes">//</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'transfers'  %}">Transfers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link slashes">//</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'fixtures'  %}">Fixtures</a>
+                </li>
+                <li class="nav-item" id="removeMobile">
+                    <a class="nav-link slashes">//</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    
+    <div class="pos-f-t page-width mobile">
+        <div class="collapse" id="navbarToggleExternalContent">
+            <div class="navMob">
+                <ul class="navbar-nav">
+                    <li class="nav-item" id="removeMobile">
+                        <a class="nav-link slashes">//</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'pages:latest'  %}"><i class="fas fa-stream"></i> Latest</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'transfers'  %}"><i class="fas fa-exchange-alt"></i> Transfers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'fixtures'  %}"><i class="far fa-calendar-alt"></i> Fixtures</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <nav class="navbar navbar-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a><img style="height: 40px;" src="{% static '/img/logowhite.png' %}" /></a>
+        </nav>
+    </div>

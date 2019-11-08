@@ -1,0 +1,49 @@
+﻿{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EvertonNews - {{title}}</title>
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-7337149224524152",
+    enable_page_level_ads: true
+  });
+    </script>
+
+    <!-- Include External CSS -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/aos.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <link href="{% static 'css/aos.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/media.css' %}" rel="stylesheet">
+    <link href="{% static 'css/footer.css' %}" rel="stylesheet">
+    <link href="{% static 'css/properties.css' %}" rel="stylesheet">
+    <link href="{% static 'css/general.css' %}" rel="stylesheet">
+    <link href="{% static 'css/animate.css' %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700&display=swap&subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+</head>
+    
+<body>
+    {% include 'all/navigation.html' %}
+    <div class="top-header page-width" id="removeMobile" style="background-image: url({% static '/img/layout/header1.png' %}); background-position: center;">
+        <img id="logo" src="{% static '/img/logowhite.png' %}" />
+    </div>
+
+    {% block content %}
+
+
+    {% endblock %}
+
+    {% include 'all/footer.html' %}
+</body>
+</html>

@@ -1,0 +1,50 @@
+{% extends 'all/layout2.html' %}
+{% load static %}
+
+{% block content %}
+<div class="post-container page-width">
+    <div id="article">
+        <div id="title-div">
+            <h1 class="card-title">Fixtures</h1>
+        </div>
+
+        <!--Table-->
+        <table id="tableFixtures" class="table">
+            <!--Table body-->
+            <tbody>
+                {% for fixture in fixtures %}
+                <tr>
+                    <th scope="row">{{ fixture.date|date:'d M y' }}</th>
+
+                    {% if fixture.type == '1' %}
+                    <td class="type">League</td>
+                    {% elif fixture.type == '2' %}
+                    <td class="type">Friendly</td>
+                    {% elif fixture.type == '3' %}
+                    <td class="type">Cup</td>
+                    {% endif %}
+
+                    <td class="home-team">{{fixture.home_name}} </td>
+                    <td class="badge">
+                        <img src="{% static fixture.homebadge %}" />
+                    </td>
+                    <td class="time">{{ fixture.date|date:' H:i' }}</td>
+                    <td class="badge">
+                        <img src="{% static fixture.awaybadge %}" />
+                    </td>
+                    <td class="away-team">{{fixture.away_name}}</td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+            <!--Table body-->
+        </table>
+        <!--Table-->
+
+        {% for fixture in fixtures %}
+
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

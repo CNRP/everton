@@ -1,0 +1,116 @@
+:root {
+    --main-bg-color: #0D1321;
+    --bg-color: #090c13;
+    --tag-color: #090c13;
+    --main-bdr-color: #80808026;
+    --dark-bdr-color: #80808026;
+    --dark-blue: #0e121d;
+    --blue: white;
+    --constant-blue: #2851a3;
+    --title-color: white;
+    --para-color: white;
+    --secondary-color: white;
+    --nav-bg: #0e131f;
+    --font1: "Merriweather",serif;
+    --font2: "Arial" Helvetica, sans-serif;
+    --pagewidth: 70%;
+}
+
+/**
+:root {
+    --main-bg-color: white;
+    --bg-color: red;
+    --main-bdr-color: #80808026;
+    --dark-bdr-color: #80808026;
+    --dark-blue: #0d1648;
+    --blue: #2851a3;
+    --title-color: black;
+    --secondary-color: white;
+}
+*/
+.mobile {
+    display: none;
+}
+
+#removeMobile{
+    display: block;
+}
+
+.page-width {
+    width: var(--pagewidth);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media all and (max-width: 1620px) {
+
+    :root {
+        --pagewidth: 80%;
+    }
+
+    #article img {
+        max-width: 75%;
+    }
+}
+
+@media all and (max-width: 1250px) {
+    .card-group {
+        width: 94%;
+    }
+
+    :root {
+        --pagewidth: 80%;
+    }
+
+    .break {
+        flex-basis: 100%;
+        height: 0;
+    }
+}
+
+@media all and (max-width: 1000px) {
+    .card-group {
+        width: 99%;
+    }
+
+    :root {
+        --pagewidth: 85%;
+    }
+
+    .navbar-brand {
+        display: none;
+    }
+
+}
+
+@media all and (max-width: 834px) {
+    :root {
+        --pagewidth: 90%;
+    } 
+
+    .navbar-light{
+        display: none;
+    }
+
+    .mobile{
+        display: block;
+    }
+
+    #removeMobile {
+        display: none;
+    }
+}
+
+@media all and (max-width: 580px) {
+    .news-card.middle {
+        margin-right: 0% !important;
+        margin-left: 0% !important;
+    }
+
+    .news-card {
+        margin-bottom: 2% !important;
+    }
+    :root {
+        --pagewidth: 100%;
+    }
+}

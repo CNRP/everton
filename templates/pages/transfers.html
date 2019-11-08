@@ -1,0 +1,65 @@
+{% extends 'all/layout2.html' %}
+{% load static %}
+
+{% block content %}
+<div class="post-container page-width">
+    <div id="article">
+        <div id="title-div">
+            <h1 class="card-title">Transfers</h1>
+        </div>
+        <script src="{% static 'js/Chart.js' %}"></script>
+
+        <div class="row">
+            <div class="col-4">
+                <table id="tableFixtures" class="table">
+                    <!--Table body-->
+                    <tbody>
+                        {%for transfer in transfers %}
+                        <tr>
+                            <th scope="row">{{transfer.name}} ({{transfer.position}}) {{transfer.fromclubname}} -> {{transfer.toclubname}}</th>
+                            {%endfor%}
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-8">
+                <canvas id="doughnut-chart" width="500" height="250"></canvas>
+            </div>
+        </div>
+
+
+
+        <script>
+                new Chart(document.getElementById("doughnut-chart"), {
+                    type: 'doughnut',
+                    data: {
+                        labels: ["Transfer In", "Transfer Out", "Loan In", "Loan Out", "In F/A", "Released"],
+                        datasets: [
+                            {
+                                label: "Total",
+                                backgroundColor: ["#1f4799", "#e7b65e", "#5e93ff", "#ffe39b", "#9459c4"],
+                                data: [{{transferIn.count}}, {{transferOut.count}}, {{loanIn.count}}, {{loanOut.count}},{{inFA.count}}, {{released.count}}]
+                            }
+                        ]
+                    },
+                    options: {
+                        title: {
+                            display: true,
+                            text: 'All 2019-20 Season Transfers'
+                        }
+                    }
+                });
+        </script>
+
+        <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text={{latest.title}}" data-size="large">
+            Tweet
+        </a>
+        <div style="padding-top: 30px;">
+            {% load disqus_tags %}
+            {% set_disqus_developer 1 %}
+
+            {% disqus_show_comments %}
+        </div>
+
+    </div>
+</div>
+{% endblock %}

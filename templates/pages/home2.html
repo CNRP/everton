@@ -1,0 +1,118 @@
+{% extends 'all/layout2.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="page-width" id="top-media">
+    <div class="row">
+        {% for post in news %}
+        <div class="col" style="padding: 0;">
+            <div class="card border-0 rounded-0 text-white overflow zoom">
+                <div class="position-relative">
+                    <div class="ratio_right-cover-2 image-wrapper">
+                        <a href="/article/{{post.id}}">
+                            <img class="img-fluid"
+                                 src="{{ post.image_home_small.url }}"
+                                 alt="Image description">
+                        </a>
+                    </div>
+                    <div class="position-absolute p-2 p-lg-3 b-0 w-100 bg-shadow">
+                        <a class="p-1 badge badge-primary rounded-0" href="#">Everton</a>
+                        <a href="/article/{{post.id}}">
+                            <h2 class="h5 text-white my-1">{{post.title}}</h2>
+                            <small style="color: white;">{{post.description}}</small>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!---->
+        {% if forloop.counter == 2 %}
+            <div class="break"></div>
+        {% endif %}
+        <!---->
+        {% endfor %}
+    </div>
+</section>
+<!---->
+<section class="page-width" id="home-content-lower">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="home-content">
+                <h1 class="card-title">Transfers</h1>
+                <script src="{% static 'js/Chart.js' %}"></script>
+                <canvas id="doughnut-chart" width="800" height="450"></canvas>
+                <table id="tableFixtures" class="table">
+                    <!--Table body-->
+                    <tbody>
+                        {% for transfer in transfers %}
+                        <tr>
+                            <th scope="row">{{transfer.name}} ({{transfer.position}}) {{transfer.fromclubname}} -> {{transfer.toclubname}}</th>
+                            {%endfor%}
+                        </tr>
+                    </tbody>
+                </table>
+                <script>
+                    new Chart(document.getElementById("doughnut-chart"), {
+                        type: 'doughnut',
+                        data: {
+                            labels: ["Transfer In", "Transfer Out", "Loan In", "Loan Out", "In F/A", "Released"],
+                            datasets: [
+                                {
+                                    label: "Total",
+                                    backgroundColor: ["#1f4799", "#e7b65e", "#5e93ff", "#ffe39b", "#9459c4"],
+                                    data: [{{transferIn.count}}, {{transferOut.count}}, {{loanIn.count}}, {{loanOut.count}},{{inFA.count}}, {{released.count}}]
+                                }
+                            ]
+                        },
+                        options: {
+                            title: {
+                                display: true,
+                                text: 'All 2019-20 Season Transfers'
+                            }
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+        <div class="col-sm-4" style="background-color: var(--bg-color);">
+            <div class="home-content">
+                <table id="tableFixtures" class="table">
+                    <!--Table body-->
+                    <tbody>
+                        {% for fixture in fixtures %}
+                        <tr>
+                            <td class="home-team"><strong>{{fixture.home_abrv}} </strong></td>
+                            <td class="badge">
+                                <img style="width: 50px; height: auto;" src="{% static fixture.homebadge %}" />
+                            </td>
+                            <td class="time" style="min-width: 90px;"><i class="far fa-calendar-alt"></i> {{ fixture.date|date:'d M y' }}<br /><i class="far fa-clock"></i> {{ fixture.date|date:'H:i' }}</td>
+                            <td>
+                                <img style="width: 50px; height: auto;" src="{% static fixture.awaybadge %}" />
+                            </td>
+                            <td class="away-team"><strong>{{fixture.away_abrv}} </strong></td>
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+                    <!--Table body-->
+                </table>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="home-content" style="margin-bottom: -60px;">
+                <h1 class="card-title">Instagram</h1><br />
+                <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+                <div class="elfsight-app-302167f9-8656-4469-894d-2b12a931f560"></div>
+                <script>
+            
+                </script>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+    {% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'all/layout2.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid" id="section">
+    <div id="title-div">
+        <h1 class="card-title">Recent Articles</h1>
+    </div>
+    <div class="row" style="margin-bottom: 40px;">
+        {% for card in cards %}
+
+        {% if forloop.counter == 2 %}
+        <div class="col-sm clickable news-card middle" style="background: url('{% static card.thumbnail_url %}');" id="click-card-{{card.id}}">
+            {% else %}
+            <div class="col-sm clickable news-card" style="background: url('{% static card.thumbnail_url %}');" id="click-card-{{card.id}}">
+                {% endif %}
+
+                <div id="date-float">
+                    <span id="date">
+                        {{card.published_on|date:'b d'}}
+                    </span>
+                </div>
+                <div id="bottom">
+                    <h5 class="card-title" name="/article/{{card.id}}">{{card.title}}</h5>
+                    <p class="card-text">{{card.description}}</p>
+                </div>
+            </div>
+
+            <script>
+                $("#click-card-{{card.id}}").click(function() {
+                    window.location = $(this).find("h5").attr("name");
+                  return false;
+                });
+            </script>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid" id="section">
+    <div id="section-tag">
+        <a>You may also like..</a>
+    </div>
+</div>
+    {% for post in posts %}
+    {% include "all/postpreview.html" with latest=post %}
+    {% endfor %}
+
+    {% endblock %}

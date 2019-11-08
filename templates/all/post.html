@@ -1,0 +1,25 @@
+{% load static %}
+    <div class="post-container page-width">
+        <div id="article">
+            <div id="section-datetag">
+                <a>{{latest.published_on|date:'d/m/Y'}}</a>
+            </div>
+            <div id="title-div">
+                <h1 class="card-title">{{latest.title}}</h1>
+            </div>
+            <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text={{latest.title}}" data-size="large">
+                Tweet
+            </a>
+            <p class="card-text">{{latest.text | safe}}</p>
+            <a class="text-muted"><strong>{{latest.published_by}}</strong> - {{latest.published_on}}</a>
+
+            <div style="padding-top: 30px;">
+                {% load disqus_tags %}
+
+
+                {% set_disqus_developer 1 %}
+
+                {% disqus_show_comments 'evertest' %}
+            </div>
+        </div>
+    </div>

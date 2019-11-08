@@ -1,0 +1,45 @@
+{% extends 'all/layout.html' %}
+{% load static %}
+
+{% block content %}
+<script src="{% static 'js/Chart.js' %}"></script>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+
+<div class="container-fluid" id="posts" data-aos="fade-up" style="width: 90%;">
+    <div id="article">
+        <div id="title-div">
+            <h1>Anylitics</h1>
+        </div>
+        <canvas id="myChart" width="1500"></canvas>
+
+        <script>
+            var ctx = document.getElementById("myChart").getContext("2d");
+
+
+            new Chart(document.getElementById("myChart"), {
+                type: 'horizontalBar',
+                data: {
+                    labels: [{% for obj in data %}'{{obj}}',{% endfor %}],
+                    datasets: [
+                        {
+                            label: "Clicks",
+                            backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                            data: [{% for key, value in data.items %}'{{ value }}',{% endfor %}]
+                        }
+                    ]
+                },
+                options: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: 'All Time Clicks Per Article'
+                    }
+                }
+            });
+        </script>
+
+        <p><strong>Total Clicks: </strong>{{totalclicks}}</p>
+    </div>
+</div>
+
+{% endblock %}
