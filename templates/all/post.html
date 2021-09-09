@@ -13,13 +13,5 @@
             <p class="card-text">{{latest.text | safe}}</p>
             <a class="text-muted"><strong>{{latest.published_by}}</strong> - {{latest.published_on}}</a>
 
-            <div style="padding-top: 30px;">
-                {% load disqus_tags %}
-
-
-                {% set_disqus_developer 1 %}
-
-                {% disqus_show_comments 'evertest' %}
-            </div>
         </div>
     </div>

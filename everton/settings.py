@@ -25,8 +25,10 @@ SECRET_KEY = 'bfbdxd+vqm6el!xbb=ie+di3rsjja3!t_+kp=gs1(cj7c@ot4%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'cnrp.xyz', 'www.evertondaily.co.uk', 'evertondaily.co.uk']
+#ALLOWED_HOSTS = ['*','localhost','cnrp.xyz', 'www.evertondaily.co.uk', 'evertondaily.co.uk']
+ALLOWED_HOSTS = ['*']
 
+SITE_ID = 1
 
 # Application definition
 
@@ -41,7 +43,6 @@ INSTALLED_APPS = [
     'everton',
     'pages',
     'tinymce',
-    'disqus',
     'analytics',
     'imagekit',
 ]
